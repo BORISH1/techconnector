@@ -1,0 +1,84 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Notice: We keep the provider here, but the URL is now safely 
+// handled by your prisma.config.ts file!
+datasource db {
+  provider = "postgresql"
+}
+
+// --------------------------------------
+// 1. USER MODEL (Profile Details)
+// --------------------------------------
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  name               String
+  photoUrl           String?   // Profile picture
+  age                Int?
+  relationshipStatus String?   // Single, Married, etc.
+  job                String?   // Occupation
+  createdAt          DateTime  @default(now())
+
+  // Relationships
+  posts              Post[]
+  comments           Comment[]
+  likes              Like[]
+}
+
+// --------------------------------------
+// 2. POST MODEL (Images and Captions)
+// --------------------------------------
+model Post {
+  id        String   @id @default(cuid())
+  imageUrl  String?  // The uploaded photo
+  caption   String?  // The text caption
+  createdAt DateTime @default(now())
+
+  // The author of the post
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Relationships
+  comments  Comment[]
+  likes     Like[]
+}
+
+// --------------------------------------
+// 3. COMMENT MODEL
+// --------------------------------------
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  // The post being commented on
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  // The user who wrote the comment
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+// --------------------------------------
+// 4. LIKE / REACTION MODEL
+// --------------------------------------
+model Like {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  // The post being liked
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  // The user who liked it
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // A user can only like a specific post once
+  @@unique([postId, userId])
+}
