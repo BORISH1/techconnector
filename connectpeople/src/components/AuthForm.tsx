@@ -75,7 +75,7 @@ export const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: `${window.location.origin}/home`,
+          redirectTo: 'https://techconnector.vercel.app/home',
         },
       });
       if (error) throw error;
