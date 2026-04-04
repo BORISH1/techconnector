@@ -55,8 +55,10 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
-          <Route path="/profile-setup" element={<ProfileSetup />} />
         </Route>
+
+        {/* Public profile setup route */}
+        <Route path="/profile-setup" element={<ProfileSetup />} />
 
         {/* Redirects */}
         <Route path="/" element={<Navigate to="/home" replace />} />

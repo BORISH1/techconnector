@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User, Github, Chrome, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useAuthStore } from '../store/authStore';
 
 interface AuthFormProps {
   type: 'login' | 'signup';
 }
 
 export const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
+  const { setUser } = useAuthStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -32,6 +34,24 @@ export const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
 
         if (signUpError) throw signUpError;
         if (data.user) {
+          setUser(data.user);
+
+          if (data.session) {
+            navigate('/profile-setup');
+            return;
+          }
+
+          const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+
+          if (signInError || !signInData.user) {
+            setError('Please confirm your email and log in to continue profile setup.');
+            return;
+          }
+
+          setUser(signInData.user);
           navigate('/profile-setup');
         }
       } else {

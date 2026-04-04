@@ -4,7 +4,7 @@ import { Home, User, LogOut, PlusSquare, Users } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 
 export const Navbar: React.FC = () => {
-  const { profile, signOut } = useAuthStore();
+  const { user, profile, signOut } = useAuthStore();
   const navigate = useNavigate();
 
   const handleSignOut = async () => {
@@ -39,23 +39,34 @@ export const Navbar: React.FC = () => {
             <PlusSquare className="w-6 h-6" />
           </button>
 
-          <Link
-            to={`/profile/${profile?.id}`}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600 hover:text-blue-600 flex items-center gap-2"
-            title="Profile"
-          >
-            {profile?.avatar_url ? (
-              <img
-                src={profile.avatar_url}
-                alt={profile.name}
-                className="w-6 h-6 rounded-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            ) : (
+          {profile ? (
+            <Link
+              to={`/profile/${profile.id}`}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600 hover:text-blue-600 flex items-center gap-2"
+              title="Profile"
+            >
+              {profile.avatar_url ? (
+                <img
+                  src={profile.avatar_url}
+                  alt={profile.name}
+                  className="w-6 h-6 rounded-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              ) : (
+                <User className="w-6 h-6" />
+              )}
+              <span className="text-sm font-medium hidden md:inline">{profile.name}</span>
+            </Link>
+          ) : (
+            <Link
+              to="/profile-setup"
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-600 hover:text-blue-600 flex items-center gap-2"
+              title="Complete Profile"
+            >
               <User className="w-6 h-6" />
-            )}
-            <span className="text-sm font-medium hidden md:inline">{profile?.name}</span>
-          </Link>
+              <span className="text-sm font-medium hidden md:inline">{user?.user_metadata?.full_name || 'Complete Profile'}</span>
+            </Link>
+          )}
 
           <button
             onClick={handleSignOut}

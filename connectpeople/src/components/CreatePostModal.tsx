@@ -16,6 +16,8 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClos
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const displayName =
+    profile?.name || user?.user_metadata?.full_name || 'there';
 
   if (!isOpen) return null;
 
@@ -40,13 +42,13 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClos
       let imageUrl = '';
 
       if (image) {
-        const fileExt = image.name.split('.').pop();
-        const fileName = `${Math.random()}.${fileExt}`;
+        const fileExt = image.name.split('.').pop() || 'png';
+        const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `posts/${user.id}/${fileName}`;
 
         const { error: uploadError } = await supabase.storage
           .from('images')
-          .upload(filePath, image);
+          .upload(filePath, image, { upsert: true });
 
         if (uploadError) throw uploadError;
 
@@ -103,7 +105,7 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClos
             />
             <div className="flex-1">
               <textarea
-                placeholder={`What's on your mind, ${profile?.name?.split(' ')[0]}?`}
+                placeholder={`What's on your mind, ${displayName.split(' ')[0]}?`}
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 className="w-full min-h-[120px] text-lg text-gray-800 placeholder-gray-400 border-none focus:ring-0 resize-none p-0"

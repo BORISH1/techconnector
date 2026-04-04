@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Camera, Loader2, Save, User, Calendar, Briefcase, Heart, FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuthStore } from '../store/authStore';
@@ -8,6 +8,25 @@ export const ProfileSetup: React.FC = () => {
   const { user, profile, fetchProfile } = useAuthStore();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center max-w-md">
+          <h1 className="text-2xl font-bold text-gray-900 mb-3">Profile setup unavailable</h1>
+          <p className="text-gray-600 mb-6">
+            Please log in first to complete your profile.
+          </p>
+          <Link
+            to="/login"
+            className="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-white font-semibold hover:bg-blue-700 transition-colors"
+          >
+            Go to Login
+          </Link>
+        </div>
+      </div>
+    );
+  }
   const [name, setName] = useState('');
   const [dob, setDob] = useState('');
   const [relationship, setRelationship] = useState('Single');

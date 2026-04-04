@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { PostCard } from '../components/PostCard';
 import { CreatePostModal } from '../components/CreatePostModal';
 import { supabase } from '../lib/supabase';
@@ -79,6 +79,22 @@ export const Home: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="lg:col-span-12 mb-6">
+        {user && !profile && (
+          <div className="rounded-2xl border border-yellow-300 bg-yellow-50 p-4 text-sm text-yellow-900">
+            <div className="font-semibold mb-2">Complete your profile</div>
+            <p className="text-gray-700 mb-3">
+              Finish your profile setup so your name, avatar, and details appear after login.
+            </p>
+            <Link
+              to="/profile-setup"
+              className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 transition-colors"
+            >
+              Go to Profile Setup
+            </Link>
+          </div>
+        )}
+      </div>
       <div className="hidden lg:block lg:col-span-3 space-y-6">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
           <div className="h-20 bg-blue-600"></div>
