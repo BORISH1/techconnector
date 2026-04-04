@@ -193,7 +193,7 @@ export const Home: React.FC = () => {
         )}
       </div>
 
-      {/* Right Sidebar - Suggestions/Events */}
+      {/* Right Sidebar - Suggestions/Events
       <div className="hidden lg:block lg:col-span-3 space-y-6">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4">
           <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -234,7 +234,7 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <CreatePostModal
         isOpen={isCreateModalOpen}
