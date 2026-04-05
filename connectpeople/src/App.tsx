@@ -2,15 +2,19 @@ import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { supabase } from './lib/supabase';
 import { useAuthStore } from './store/authStore';
+import { useThemeStore } from './store/themeStore';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
 import { ProfileSetup } from './pages/ProfileSetup';
 import { ProfilePage } from './pages/Profile';
+import { SettingsPage } from './pages/Settings';
 
 export default function App() {
   const { setUser, fetchProfile, loading } = useAuthStore();
+
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     // Check initial session
@@ -36,6 +40,14 @@ export default function App() {
     return () => subscription.unsubscribe();
   }, [setUser, fetchProfile]);
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -55,6 +67,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="/settings" element={<SettingsPage />} />
         </Route>
 
         {/* Public profile setup route */}

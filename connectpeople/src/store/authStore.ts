@@ -18,6 +18,7 @@ interface AuthState {
   user: User | null;
   profile: Profile | null;
   loading: boolean;
+  profileLoading: boolean;
   setUser: (user: User | null) => void;
   setProfile: (profile: Profile | null) => void;
   fetchProfile: (userId: string) => Promise<void>;
@@ -28,9 +29,11 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   profile: null,
   loading: true,
+  profileLoading: false,
   setUser: (user) => set({ user, loading: false }),
   setProfile: (profile) => set({ profile }),
   fetchProfile: async (userId) => {
+    set({ profileLoading: true });
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -43,6 +46,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     } catch (error) {
       console.error('Error fetching profile:', error);
       set({ profile: null });
+    } finally {
+      set({ profileLoading: false });
     }
   },
   signOut: async () => {

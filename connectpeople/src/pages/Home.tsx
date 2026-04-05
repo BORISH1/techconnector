@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { user, profile } = useAuthStore();
+  const { user, profile, profileLoading } = useAuthStore();
   const isCreateModalOpen = searchParams.get('create') === 'true';
 
   const fetchPosts = async () => {

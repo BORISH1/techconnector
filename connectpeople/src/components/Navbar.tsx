@@ -3,59 +3,63 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Home, User, PlusSquare, Users, Settings, Bell, X } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { supabase } from '../lib/supabase';
-import { SettingsModal } from './SettingsModal';
 
 export const Navbar: React.FC = () => {
   const { user, profile } = useAuthStore();
-  const [showSettings, setShowSettings] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
   const [notificationDetails, setNotificationDetails] = useState<{ likes: number; comments: number } | null>(null);
   const [, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      if (!user) return;
+  const fetchNotifications = async () => {
+    if (!user) return;
 
-      try {
-        const { data: postsData, error: postsError } = await supabase
-          .from('posts')
-          .select('id')
-          .eq('user_id', user.id);
+    try {
+      const { data: postsData, error: postsError } = await supabase
+        .from('posts')
+        .select('id')
+        .eq('user_id', user.id);
 
-        if (postsError) throw postsError;
+      if (postsError) throw postsError;
 
-        const postIds = (postsData || []).map((post) => post.id);
-        if (postIds.length === 0) {
-          setNotificationCount(0);
-          setNotificationDetails({ likes: 0, comments: 0 });
-          return;
-        }
-
-        const [{ count: likesCount }, { count: commentsCount }] = await Promise.all([
-          supabase
-            .from('likes')
-            .select('*', { count: 'exact', head: true })
-            .in('post_id', postIds)
-            .neq('user_id', user.id),
-          supabase
-            .from('comments')
-            .select('*', { count: 'exact', head: true })
-            .in('post_id', postIds)
-            .neq('user_id', user.id),
-        ]);
-
-        const likes = likesCount || 0;
-        const comments = commentsCount || 0;
-        setNotificationCount(likes + comments);
-        setNotificationDetails({ likes, comments });
-      } catch (error) {
-        console.error('Error fetching notifications:', error);
+      const postIds = (postsData || []).map((post) => post.id);
+      if (postIds.length === 0) {
+        setNotificationCount(0);
+        setNotificationDetails({ likes: 0, comments: 0 });
+        return;
       }
-    };
 
+      const [{ count: likesCount }, { count: commentsCount }] = await Promise.all([
+        supabase
+          .from('likes')
+          .select('*', { count: 'exact', head: true })
+          .in('post_id', postIds)
+          .neq('user_id', user.id),
+        supabase
+          .from('comments')
+          .select('*', { count: 'exact', head: true })
+          .in('post_id', postIds)
+          .neq('user_id', user.id),
+      ]);
+
+      const likes = likesCount || 0;
+      const comments = commentsCount || 0;
+      setNotificationCount(likes + comments);
+      setNotificationDetails({ likes, comments });
+    } catch (error) {
+      console.error('Error fetching notifications:', error);
+    }
+  };
+
+  useEffect(() => {
     fetchNotifications();
   }, [user]);
+
+  useEffect(() => {
+    if (showNotifications) {
+      fetchNotifications();
+    }
+  }, [showNotifications, user]);
 
   return (
     <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
@@ -153,18 +157,15 @@ export const Navbar: React.FC = () => {
             </Link>
           )}
 
-          <button
-            onClick={() => setShowSettings(true)}
+          <Link
+            to="/settings"
             className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
             title="Settings"
           >
             <Settings className="w-6 h-6" />
-          </button>
+          </Link>
         </div>
       </div>
-
-      {/* Settings Modal */}
-      <SettingsModal isOpen={showSettings} onClose={() => setShowSettings(false)} />
     </nav>
   );
 };
