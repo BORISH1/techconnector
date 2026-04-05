@@ -103,7 +103,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
               Font Size
             </h3>
             <div className="space-y-2">
-              {(['small', 'medium', 'large'] as FontSize[]).map((size) => (
+              {(['sm', 'med', 'lg'] as FontSize[]).map((size) => (
                 <button
                   key={size}
                   onClick={() => setFontSize(size)}
