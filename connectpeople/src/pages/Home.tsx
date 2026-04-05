@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PostCard } from '../components/PostCard';
 import { CreatePostModal } from '../components/CreatePostModal';
+import { Stories } from '../components/Stories';
 import { supabase } from '../lib/supabase';
 import { Post } from '../types';
 import { useAuthStore } from '../store/authStore';
@@ -136,8 +137,11 @@ export const Home: React.FC = () => {
 
       {/* Main Feed */}
       <div className="lg:col-span-6">
+        {/* Stories */}
+        <Stories />
+
         {/* Create Post Trigger */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 mb-6 flex gap-4 items-center">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-6 flex gap-4 items-center">
           <img
             src={profile?.avatar_url || 'https://via.placeholder.com/40'}
             alt={profile?.name}

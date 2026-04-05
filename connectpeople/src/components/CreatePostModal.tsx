@@ -42,15 +42,36 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClos
       let imageUrl = '';
 
       if (image) {
+        // Validate file
+        const maxSize = 10 * 1024 * 1024; // 10MB
+        const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+        if (image.size > maxSize) {
+          alert('Image size must be less than 10MB');
+          setLoading(false);
+          return;
+        }
+
+        if (!validTypes.includes(image.type)) {
+          alert('Only JPG, PNG, GIF, and WebP images are allowed');
+          setLoading(false);
+          return;
+        }
+
         const fileExt = image.name.split('.').pop() || 'png';
         const fileName = `${Date.now()}.${fileExt}`;
         const filePath = `posts/${user.id}/${fileName}`;
+
+        console.log('Uploading post image to:', filePath);
 
         const { error: uploadError } = await supabase.storage
           .from('images')
           .upload(filePath, image, { upsert: true });
 
-        if (uploadError) throw uploadError;
+        if (uploadError) {
+          console.error('Upload error:', uploadError);
+          throw new Error(`Image upload failed: ${uploadError.message}`);
+        }
 
         const { data: { publicUrl } } = supabase.storage
           .from('images')
@@ -74,9 +95,11 @@ export const CreatePostModal: React.FC<CreatePostModalProps> = ({ isOpen, onClos
       setImagePreview(null);
       onSuccess();
       onClose();
+      alert('Post created successfully!');
     } catch (error) {
       console.error('Error creating post:', error);
-      alert('Failed to create post. Please try again.');
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error occurred';
+      alert(`Failed to create post: ${errorMsg}`);
     } finally {
       setLoading(false);
     }

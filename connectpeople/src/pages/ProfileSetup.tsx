@@ -70,27 +70,50 @@ export const ProfileSetup: React.FC = () => {
       let avatarUrl = avatarPreview || '';
 
       if (avatar) {
+        // Validate file
+        const maxSize = 5 * 1024 * 1024; // 5MB
+        const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+
+        if (avatar.size > maxSize) {
+          alert('Avatar size must be less than 5MB');
+          setLoading(false);
+          return;
+        }
+
+        if (!validTypes.includes(avatar.type)) {
+          alert('Only JPG, PNG, GIF, and WebP images are allowed');
+          setLoading(false);
+          return;
+        }
+
         const fileExt = avatar.name.split('.').pop();
         const fileName = `${user.id}.${fileExt}`;
         const filePath = `avatars/${fileName}`;
+
+        console.log('Uploading avatar to:', filePath);
 
         const { error: uploadError } = await supabase.storage
           .from('images')
           .upload(filePath, avatar, { upsert: true });
 
-        if (uploadError) throw uploadError;
+        if (uploadError) {
+          console.error('Upload error:', uploadError);
+          throw new Error(`Avatar upload failed: ${uploadError.message}`);
+        }
+
+        console.log('Avatar uploaded successfully');
 
         const { data: { publicUrl } } = supabase.storage
           .from('images')
           .getPublicUrl(filePath);
-        
+
         avatarUrl = publicUrl;
       }
 
-      const { error } = await supabase
+      // First try to update existing profile
+      const { error: updateError } = await supabase
         .from('profiles')
-        .upsert({
-          id: user.id,
+        .update({
           name,
           email: user.email,
           dob,
@@ -98,16 +121,38 @@ export const ProfileSetup: React.FC = () => {
           job,
           bio,
           avatar_url: avatarUrl,
-          created_at: new Date().toISOString(),
-        });
+        })
+        .eq('id', user.id);
 
-      if (error) throw error;
+      // If update failed (profile doesn't exist), create new profile
+      if (updateError) {
+        console.log('Profile update failed, trying to create new profile:', updateError);
+        const { error: insertError } = await supabase
+          .from('profiles')
+          .insert({
+            id: user.id,
+            name,
+            email: user.email,
+            dob,
+            relationship_status: relationship,
+            job,
+            bio,
+            avatar_url: avatarUrl,
+          });
+
+        if (insertError) {
+          console.error('Profile insert error:', insertError);
+          throw new Error(`Failed to save profile: ${insertError.message}`);
+        }
+      }
 
       await fetchProfile(user.id);
       navigate('/home');
+      alert('Profile saved successfully!');
     } catch (error) {
       console.error('Error saving profile:', error);
-      alert('Failed to save profile. Please try again.');
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error occurred';
+      alert(`Failed to save profile: ${errorMsg}`);
     } finally {
       setLoading(false);
     }
