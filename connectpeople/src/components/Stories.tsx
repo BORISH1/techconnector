@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Upload, Loader2, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useAuthStore } from '../store/authStore';
+import { StoryViewer } from './StoryViewer';
 
 interface Story {
   id: string;
@@ -33,6 +34,8 @@ export const Stories: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [showUpload, setShowUpload] = useState(false);
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const [viewerIndex, setViewerIndex] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -155,6 +158,11 @@ export const Stories: React.FC = () => {
     }
   };
 
+  const handleStoryClick = (index: number) => {
+    setViewerIndex(index);
+    setViewerOpen(true);
+  };
+
   return (
     <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-6">
       <div className="flex overflow-x-auto gap-3 pb-2">
@@ -187,12 +195,13 @@ export const Stories: React.FC = () => {
             <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
           </div>
         ) : stories.length > 0 ? (
-          stories.map((storyUser) => (
+          stories.map((storyUser, index) => (
             <div key={storyUser.user_id} className="flex-shrink-0">
               <div className="relative">
                 <img
                   src={storyUser.story?.image_url || 'https://via.placeholder.com/80'}
                   alt={storyUser.profile.name}
+                  onClick={() => handleStoryClick(index)}
                   className="w-20 h-24 rounded-xl object-cover cursor-pointer hover:opacity-80 transition-opacity"
                 />
                 <img
@@ -214,6 +223,14 @@ export const Stories: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Story Viewer Modal */}
+      <StoryViewer
+        stories={stories}
+        initialIndex={viewerIndex}
+        isOpen={viewerOpen}
+        onClose={() => setViewerOpen(false)}
+      />
 
       {/* Upload modal */}
       {showUpload && (

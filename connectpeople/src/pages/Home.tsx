@@ -80,30 +80,14 @@ export const Home: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <div className="lg:col-span-12 mb-6">
-        {user && !profile && (
-          <div className="rounded-2xl border border-yellow-300 bg-yellow-50 p-4 text-sm text-yellow-900">
-            <div className="font-semibold mb-2">Complete your profile</div>
-            <p className="text-gray-700 mb-3">
-              Finish your profile setup so your name, avatar, and details appear after login.
-            </p>
-            <Link
-              to="/profile-setup"
-              className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-4 py-2 text-sm font-semibold text-black hover:bg-yellow-500 transition-colors"
-            >
-              Go to Profile Setup
-            </Link>
-          </div>
-        )}
-      </div>
       <div className="hidden lg:block lg:col-span-3 space-y-6">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
           <div className="h-20 bg-blue-600"></div>
           <div className="px-4 pb-4 text-center">
             <img
               src={profile?.avatar_url || 'https://via.placeholder.com/64'}
               alt={profile?.name}
-              className="w-16 h-16 rounded-xl border-4 border-white mx-auto -mt-8 object-cover shadow-sm mb-2"
+              className="w-16 h-16 rounded-xl border-4 border-white dark:border-gray-800 mx-auto -mt-8 object-cover shadow-sm mb-2"
               referrerPolicy="no-referrer"
             />
             <h3 className="font-bold text-gray-900">{profile?.name}</h3>
@@ -121,12 +105,12 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-4">
-          <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-4">
+          <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
             <TrendingUp className="w-4 h-4 text-blue-600" />
             Trending Topics
           </h4>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
             <li className="text-blue-600 hover:underline cursor-pointer font-medium">#ConnectPeople</li>
             <li className="text-blue-600 hover:underline cursor-pointer font-medium">#ReactDevelopment</li>
             <li className="text-blue-600 hover:underline cursor-pointer font-medium">#SupabaseIsAwesome</li>
@@ -150,9 +134,9 @@ export const Home: React.FC = () => {
           />
           <button
             onClick={() => setSearchParams({ create: 'true' })}
-            className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-500 text-left px-4 py-2.5 rounded-full transition-colors font-medium"
+            className="flex-1 bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-300 text-left px-4 py-2.5 rounded-full transition-colors font-medium"
           >
-            What's on your mind, {profile?.name?.split(' ')[0]}?
+            What's on your mind, {profile?.name?.split(' ')[0] || user?.user_metadata?.full_name?.split(' ')[0] || 'there'}?
           </button>
         </div>
 
@@ -180,12 +164,12 @@ export const Home: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-2xl p-12 text-center shadow-sm border border-gray-200">
-            <div className="bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-12 text-center shadow-sm border border-gray-200 dark:border-gray-700">
+            <div className="bg-blue-50 dark:bg-blue-900/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-blue-600" />
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No posts yet</h3>
-            <p className="text-gray-500 mb-6">Be the first to share something with the community!</p>
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">No posts yet</h3>
+            <p className="text-gray-500 dark:text-gray-400 mb-6">Be the first to share something with the community!</p>
             <button
               onClick={() => setSearchParams({ create: 'true' })}
               className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-lg transition-colors flex items-center gap-2 mx-auto"

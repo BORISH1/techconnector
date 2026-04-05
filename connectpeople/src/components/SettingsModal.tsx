@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Moon, Sun, Type, LogOut } from 'lucide-react';
+import { X, Moon, Sun, Type, LogOut, HelpCircle, MessageCircle, Phone, Mail } from 'lucide-react';
 import { useThemeStore, FontSize, Theme } from '../store/themeStore';
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +18,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
     await signOut();
     navigate('/login');
     onClose();
+  };
+
+  const handleWhatsApp = () => {
+    // Replace with your actual WhatsApp number
+    const phoneNumber = '9612024828'; // Replace with your WhatsApp number
+    const message = 'Hi! I need help with ConnectPeople app.';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleEmailSupport = () => {
+    const subject = 'ConnectPeople App Support';
+    const body = 'Hi, I need help with the ConnectPeople app. Please describe my issue here.';
+    const emailUrl = `mailto:borishningombam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(emailUrl, '_blank');
+  };
+
+  const handleDeveloperContact = () => {
+    const subject = 'ConnectPeople App - Developer Contact';
+    const body = 'Hi Developer, I have a question/suggestion about ConnectPeople app.';
+    const emailUrl = `mailto:borishningombam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(emailUrl, '_blank');
   };
 
   if (!isOpen) return null;
@@ -108,6 +130,37 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
                   </span>
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* Support & Contact */}
+          <div>
+            <h3 className="font-semibold text-gray-900 dark:text-white mb-3 flex items-center gap-2">
+              <HelpCircle className="w-4 h-4" />
+              Support & Contact
+            </h3>
+            <div className="space-y-2">
+              <button
+                onClick={handleWhatsApp}
+                className="w-full p-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-green-500 dark:hover:border-green-400 transition-all flex items-center gap-3 hover:bg-green-50 dark:hover:bg-green-900/20"
+              >
+                <MessageCircle className="w-5 h-5 text-green-600" />
+                <span className="text-gray-700 dark:text-gray-300">WhatsApp Support</span>
+              </button>
+              <button
+                onClick={handleEmailSupport}
+                className="w-full p-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all flex items-center gap-3 hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              >
+                <Mail className="w-5 h-5 text-blue-600" />
+                <span className="text-gray-700 dark:text-gray-300">Email Support</span>
+              </button>
+              <button
+                onClick={handleDeveloperContact}
+                className="w-full p-3 rounded-lg border-2 border-gray-200 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-400 transition-all flex items-center gap-3 hover:bg-purple-50 dark:hover:bg-purple-900/20"
+              >
+                <Phone className="w-5 h-5 text-purple-600" />
+                <span className="text-gray-700 dark:text-gray-300">Contact Developer</span>
+              </button>
             </div>
           </div>
 

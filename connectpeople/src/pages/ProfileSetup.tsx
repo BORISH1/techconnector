@@ -11,10 +11,10 @@ export const ProfileSetup: React.FC = () => {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center max-w-md">
-          <h1 className="text-2xl font-bold text-gray-900 mb-3">Profile setup unavailable</h1>
-          <p className="text-gray-600 mb-6">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 p-8 text-center max-w-md">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">Profile setup unavailable</h1>
+          <p className="text-gray-600 dark:text-gray-400 mb-6">
             Please log in first to complete your profile.
           </p>
           <Link
@@ -159,9 +159,9 @@ export const ProfileSetup: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
           <div className="h-32 bg-gradient-to-r from-blue-500 to-indigo-600"></div>
           
           <div className="px-8 pb-8">
@@ -170,7 +170,7 @@ export const ProfileSetup: React.FC = () => {
                 <img
                   src={avatarPreview || 'https://via.placeholder.com/128'}
                   alt="Profile Preview"
-                  className="w-32 h-32 rounded-2xl border-4 border-white object-cover shadow-lg"
+                  className="w-32 h-32 rounded-2xl border-4 border-white dark:border-gray-800 object-cover shadow-lg"
                   referrerPolicy="no-referrer"
                 />
                 <button
@@ -191,8 +191,8 @@ export const ProfileSetup: React.FC = () => {
             </div>
 
             <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold text-gray-900">Complete Your Profile</h1>
-              <p className="text-gray-500">Tell the community a bit about yourself</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Complete Your Profile</h1>
+              <p className="text-gray-500 dark:text-gray-400">Tell the community a bit about yourself</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">

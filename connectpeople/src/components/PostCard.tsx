@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, MessageCircle, Share2, MoreHorizontal, Send, Edit2, Trash2 } from 'lucide-react';
+import { Heart, MessageCircle, Share2, MoreHorizontal, Send, Edit2, Trash2, X } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { Post, Comment } from '../types';
 import { supabase } from '../lib/supabase';
@@ -24,9 +24,13 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
   const [showLikes, setShowLikes] = useState(false);
   const [likesUsers, setLikesUsers] = useState<any[]>([]);
   const [loadingLikes, setLoadingLikes] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+
+  const openImageModal = () => setShowImageModal(true);
+  const closeImageModal = () => setShowImageModal(false);
 
   const isOwnPost = user?.id === post.user_id;
 
@@ -150,7 +154,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden mb-6">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden mb-6">
       {/* Header */}
       <div className="p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
@@ -210,23 +214,41 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
 
       {/* Content */}
       <div className="px-4 pb-3">
-        <p className="text-gray-800 whitespace-pre-wrap">{post.content}</p>
+        <p className="text-gray-800 dark:text-gray-100 whitespace-pre-wrap">{post.content}</p>
       </div>
 
       {/* Image */}
       {post.image_url && (
-        <div className="relative aspect-video bg-gray-100">
+        <div className="relative aspect-video bg-gray-100 dark:bg-gray-900">
           <img
             src={post.image_url}
             alt="Post content"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover cursor-pointer"
+            referrerPolicy="no-referrer"
+            onClick={openImageModal}
+          />
+        </div>
+      )}
+
+      {showImageModal && (
+        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+          <button
+            onClick={closeImageModal}
+            className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <img
+            src={post.image_url}
+            alt="Post content"
+            className="max-w-full max-h-full object-contain rounded-2xl shadow-2xl"
             referrerPolicy="no-referrer"
           />
         </div>
       )}
 
       {/* Stats */}
-      <div className="px-4 py-2 flex items-center justify-between border-t border-gray-100 text-sm text-gray-500">
+      <div className="px-4 py-2 flex items-center justify-between border-t border-gray-100 dark:border-gray-700 text-sm text-gray-500 dark:text-gray-300">
         <div className="flex items-center gap-1">
           <div className="bg-blue-500 rounded-full p-1">
             <Heart className="w-3 h-3 text-white fill-current" />
@@ -245,7 +267,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
       </div>
 
       {/* Actions */}
-      <div className="px-2 py-1 flex items-center border-t border-gray-100">
+      <div className="px-2 py-1 flex items-center border-t border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-900">
         <button
           onClick={handleLike}
           disabled={isLiking}
@@ -272,7 +294,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
 
       {/* Comments Section */}
       {showComments && (
-        <div className="border-t border-gray-100 bg-gray-50 p-4">
+        <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4">
           <div className="space-y-4 mb-4">
             {loadingComments ? (
               <div className="flex justify-center py-4">
@@ -287,7 +309,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
                     className="w-8 h-8 rounded-full object-cover shrink-0"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex-1">
+                  <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex-1">
                     <div className="flex justify-between items-start mb-1">
                       <Link
                         to={`/profile/${comment.user_id}`}
@@ -321,7 +343,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
                 placeholder="Write a comment..."
                 value={newComment}
                 onChange={(e) => setNewComment(e.target.value)}
-                className="w-full bg-white border border-gray-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
+                className="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-4 py-2 text-sm text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
               />
               <button
                 type="submit"
@@ -337,7 +359,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
 
       {/* Likes Section */}
       {showLikes && (
-        <div className="border-t border-gray-100 bg-gray-50 p-4">
+        <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4">
           <h4 className="font-semibold text-gray-900 mb-4">People who liked this</h4>
           <div className="space-y-3">
             {loadingLikes ? (

@@ -86,18 +86,18 @@ export const ProfilePage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20">
+      <div className="flex flex-col items-center justify-center py-20 bg-gray-50 dark:bg-gray-950">
         <Loader2 className="w-12 h-12 text-blue-600 animate-spin mb-4" />
-        <p className="text-gray-500 font-medium">Loading profile...</p>
+        <p className="text-gray-500 dark:text-gray-400 font-medium">Loading profile...</p>
       </div>
     );
   }
 
   if (!profile) {
     return (
-      <div className="text-center py-20">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Profile Not Found</h2>
-        <p className="text-gray-500">The user you're looking for doesn't exist or has been removed.</p>
+      <div className="text-center py-20 bg-gray-50 dark:bg-gray-950">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Profile Not Found</h2>
+        <p className="text-gray-500 dark:text-gray-400">The user you're looking for doesn't exist or has been removed.</p>
       </div>
     );
   }
