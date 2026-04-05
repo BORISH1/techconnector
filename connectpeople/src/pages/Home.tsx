@@ -91,7 +91,7 @@ export const Home: React.FC = () => {
               referrerPolicy="no-referrer"
             />
             <h3 className="font-bold text-gray-900">{profile?.name}</h3>
-            <p className="text-xs text-gray-500 mb-4">{profile?.job || 'ConnectPeople User'}</p>
+            <p className="text-xs text-gray-500 mb-4">{profile?.job || 'TechConnector User'}</p>
             <div className="border-t border-gray-100 pt-4 flex justify-around text-sm">
               <div>
                 <span className="block font-bold text-gray-900">0</span>
@@ -111,7 +111,7 @@ export const Home: React.FC = () => {
             Trending Topics
           </h4>
           <ul className="space-y-3 text-sm text-gray-700 dark:text-gray-300">
-            <li className="text-blue-600 hover:underline cursor-pointer font-medium">#ConnectPeople</li>
+            <li className="text-blue-600 hover:underline cursor-pointer font-medium">#TechConnector</li>
             <li className="text-blue-600 hover:underline cursor-pointer font-medium">#ReactDevelopment</li>
             <li className="text-blue-600 hover:underline cursor-pointer font-medium">#SupabaseIsAwesome</li>
             <li className="text-blue-600 hover:underline cursor-pointer font-medium">#TechTrends2026</li>

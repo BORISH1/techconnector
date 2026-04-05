@@ -144,6 +144,17 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
     if (showLikes) setShowLikes(false);
   };
 
+  const handleShare = () => {
+    const postText = post.content || '';
+    const imageUrl = post.image_url || '';
+
+    // Create engaging share message focused on joining
+    const shareMessage = `"${postText}"\n\n${imageUrl ? '[📸 Image attached]\n\n' : ''}🌟 Join TechConnector - Connect with amazing people!\n\n👉 techconnector.vercel.app\n\n#TechConnector #ConnectWithPeople`;
+
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   const toggleLikes = () => {
     if (!showLikes) {
       fetchLikesUsers();
@@ -167,7 +178,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
           <div>
             <Link 
               to={`/profile/${post.user_id}`}
-              className="font-semibold text-gray-900 hover:text-blue-600 transition-colors"
+              className="font-semibold text-gray-100 hover:text-blue-600 transition-colors"
             >
               {post.profiles?.name}
             </Link>
@@ -286,7 +297,10 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
           <MessageCircle className="w-5 h-5" />
           <span className="font-medium">Comment</span>
         </button>
-        <button className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors">
+        <button
+          onClick={handleShare}
+          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors"
+        >
           <Share2 className="w-5 h-5" />
           <span className="font-medium">Share</span>
         </button>

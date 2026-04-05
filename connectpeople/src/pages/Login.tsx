@@ -9,7 +9,7 @@ export const Login: React.FC = () => {
         <div className="bg-blue-600 p-2 rounded-xl shadow-lg shadow-blue-200 dark:shadow-blue-900/50">
           <Users className="w-8 h-8 text-white" />
         </div>
-        <span className="text-3xl font-bold text-gray-900 dark:text-white">ConnectPeople</span>
+        <span className="text-3xl font-bold text-gray-900 dark:text-white">TechConnector</span>
       </div>
       <AuthForm type="login" />
     </div>

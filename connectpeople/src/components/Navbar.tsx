@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
           <div className="bg-blue-600 p-1.5 rounded-lg">
             <Users className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-bold text-gray-900 dark:text-white hidden sm:inline">ConnectPeople</span>
+          <span className="text-xl font-bold text-gray-900 dark:text-white hidden sm:inline">TechConnector</span>
         </Link>
 
         <div className="relative flex items-center gap-1 sm:gap-4">

@@ -23,21 +23,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose })
   const handleWhatsApp = () => {
     // Replace with your actual WhatsApp number
     const phoneNumber = '9612024828'; // Replace with your WhatsApp number
-    const message = 'Hi! I need help with ConnectPeople app.';
+    const message = 'Hi! I need help with TechConnector app.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handleEmailSupport = () => {
-    const subject = 'ConnectPeople App Support';
-    const body = 'Hi, I need help with the ConnectPeople app. Please describe my issue here.';
+    const subject = 'TechConnector App Support';
+    const body = 'Hi, I need help with the TechConnector app. Please describe my issue here.';
     const emailUrl = `mailto:borishningombam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(emailUrl, '_blank');
   };
 
   const handleDeveloperContact = () => {
-    const subject = 'ConnectPeople App - Developer Contact';
-    const body = 'Hi Developer, I have a question/suggestion about ConnectPeople app.';
+    const subject = 'TechConnector App - Developer Contact';
+    const body = 'Hi Developer, I have a question/suggestion about TechConnector app.';
     const emailUrl = `mailto:borishningombam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(emailUrl, '_blank');
   };

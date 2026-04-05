@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X, Moon, Sun, Type, LogOut, HelpCircle, MessageCircle, Phone, Mail } from 'lucide-react';
 import { useThemeStore, FontSize } from '../store/themeStore';
@@ -6,8 +6,13 @@ import { useAuthStore } from '../store/authStore';
 
 export const SettingsPage: React.FC = () => {
   const { theme, fontSize, setTheme, setFontSize } = useThemeStore();
-  const { signOut } = useAuthStore();
+  const { signOut, profile } = useAuthStore();
   const navigate = useNavigate();
+
+  // Set theme to light mode as requested
+  useEffect(() => {
+    setTheme('light');
+  }, [setTheme]);
 
   const handleLogout = async () => {
     await signOut();
@@ -16,21 +21,21 @@ export const SettingsPage: React.FC = () => {
 
   const handleWhatsApp = () => {
     const phoneNumber = '9612024828';
-    const message = 'Hi! I need help with ConnectPeople app.';
+    const message = 'Hi! I need help with TechConnector app.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
   const handleEmailSupport = () => {
-    const subject = 'ConnectPeople App Support';
-    const body = 'Hi, I need help with the ConnectPeople app. Please describe my issue here.';
+    const subject = 'TechConnector App Support';
+    const body = 'Hi, I need help with the TechConnector app. Please describe my issue here.';
     const emailUrl = `mailto:borishningombam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(emailUrl, '_blank');
   };
 
   const handleDeveloperContact = () => {
-    const subject = 'ConnectPeople App - Developer Contact';
-    const body = 'Hi Developer, I have a question/suggestion about ConnectPeople app.';
+    const subject = 'TechConnector App - Developer Contact';
+    const body = 'Hi Developer, I have a question/suggestion about TechConnector app.';
     const emailUrl = `mailto:borishningombam@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.open(emailUrl, '_blank');
   };
@@ -41,7 +46,9 @@ export const SettingsPage: React.FC = () => {
         <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-800">
           <div>
             <h1 className="text-2xl font-bold">Settings</h1>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Control app themes, support options, and account settings.</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {profile?.name ? `Hello, ${profile.name}! ` : ''}Control app themes, support options, and account settings.
+            </p>
           </div>
           <button
             onClick={() => navigate(-1)}
