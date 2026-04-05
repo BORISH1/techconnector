@@ -320,22 +320,22 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
                   <img
                     src={comment.profiles?.avatar_url || 'https://via.placeholder.com/32'}
                     alt={comment.profiles?.name}
-                    className="w-8 h-8 rounded-full object-cover shrink-0"
+                    className="w-8 h-8 rounded-full object-cover shrink-0 text-gray-100"
                     referrerPolicy="no-referrer"
                   />
                   <div className="bg-white dark:bg-gray-800 p-3 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex-1">
                     <div className="flex justify-between items-start mb-1">
                       <Link
                         to={`/profile/${comment.user_id}`}
-                        className="font-semibold text-sm text-gray-900 hover:text-blue-600 transition-colors"
+                        className="font-semibold text-sm text-gray-100 hover:text-blue-600 transition-colors"
                       >
                         {comment.profiles?.name}
                       </Link>
-                      <span className="text-[10px] text-gray-400">
+                      <span className="text-[10px] text-gray-100">
                         {formatDistanceToNow(new Date(comment.created_at))}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-800">{comment.content}</p>
+                    <p className="text-sm text-gray-100">{comment.content}</p>
                   </div>
                 </div>
               ))
@@ -374,7 +374,7 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
       {/* Likes Section */}
       {showLikes && (
         <div className="border-t border-gray-100 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-4">
-          <h4 className="font-semibold text-gray-900 mb-4">People who liked this</h4>
+          <h4 className="font-semibold text-gray-300 mb-4">People who liked this</h4>
           <div className="space-y-3">
             {loadingLikes ? (
               <div className="flex justify-center py-4">
@@ -391,14 +391,14 @@ export const PostCard: React.FC<PostCardProps> = ({ post, onUpdate }) => {
                   />
                   <Link
                     to={`/profile/${like.user_id}`}
-                    className="font-medium text-gray-900 hover:text-blue-600 transition-colors"
+                    className="font-medium text-gray-100 hover:text-blue-600 transition-colors"
                   >
                     {like.profiles?.name}
                   </Link>
                 </div>
               ))
             ) : (
-              <p className="text-center text-gray-500 text-sm py-4">No likes yet.</p>
+              <p className="text-center text-gray-100 text-sm py-4">No likes yet.</p>
             )}
           </div>
         </div>
