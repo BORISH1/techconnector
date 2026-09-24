@@ -1,11 +1,12 @@
 // app/lib/auth.ts
-import { createAuthClient } from "@neondatabase/auth";
+import { createAuthClient } from "@neondatabase/auth/next";
 
 const authUrl = process.env.NEXT_PUBLIC_NEON_AUTH_URL;
 
 if (!authUrl) {
-  throw new Error("NEXT_PUBLIC_NEON_AUTH_URL is not defined in your .env file");
+  throw new Error("NEXT_PUBLIC_NEON_AUTH_URL is missing in .env");
 }
 
-// Pass the string directly as the first argument
-export const authClient = createAuthClient(authUrl);
+export const authClient = createAuthClient({
+  baseURL: authUrl 
+});

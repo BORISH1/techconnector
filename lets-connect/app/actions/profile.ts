@@ -1,7 +1,7 @@
+// app/actions/profile.ts
 "use server";
 import { PrismaClient } from "@prisma/client";
 
-// Initialize Prisma
 const prisma = new PrismaClient();
 
 export async function saveProfileDetails(
@@ -9,7 +9,6 @@ export async function saveProfileDetails(
   data: { age: number; job: string; relationshipStatus: string }
 ) {
   try {
-    // Update the user record using the ID provided by Neon Auth
     await prisma.user.update({
       where: { id: userId },
       data: {
@@ -18,10 +17,9 @@ export async function saveProfileDetails(
         relationshipStatus: data.relationshipStatus, 
       },
     });
-
     return { success: true };
   } catch (error) {
     console.error("Database Error:", error);
-    return { success: false, error: "Failed to save profile details to the database." };
+    return { success: false, error: "Failed to save profile details." };
   }
 }
