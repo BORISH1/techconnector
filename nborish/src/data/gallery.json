@@ -1,0 +1,26 @@
+{
+  "iit_ropar": {
+    "label": "IIT Ropar",
+    "subtitle": "Research Internship · May–July 2026",
+    "description": "Rupnagar, Punjab, India",
+    "photos": [
+      { "src": "/gallery/iit-ropar/photo-1.jpg", "caption": "Campus view at IIT Ropar" },
+      { "src": "/gallery/iit-ropar/photo-2.jpg", "caption": "Research lab sessions" },
+      { "src": "/gallery/iit-ropar/photo-3.jpg", "caption": "Working on the Campus Navigation System" },
+      { "src": "/gallery/iit-ropar/photo-4.jpg", "caption": "IIT Ropar campus" },
+      { "src": "/gallery/iit-ropar/photo-5.jpg", "caption": "Internship days" },
+      { "src": "/gallery/iit-ropar/photo-6.jpg", "caption": "IIT Ropar memories" }
+    ]
+  },
+  "iisc_bangalore": {
+    "label": "IISc Bangalore",
+    "subtitle": "Visit · 2026",
+    "description": "Bengaluru, Karnataka, India",
+    "photos": [
+      { "src": "/gallery/iisc-bangalore/photo-1.jpg", "caption": "Indian Institute of Science" },
+      { "src": "/gallery/iisc-bangalore/photo-2.jpg", "caption": "IISc campus" },
+      { "src": "/gallery/iisc-bangalore/photo-3.jpg", "caption": "Campus exploration" },
+      { "src": "/gallery/iisc-bangalore/photo-4.jpg", "caption": "At IISc Bangalore" }
+    ]
+  }
+}

@@ -1,0 +1,381 @@
+{
+  "name": "Ningombam Borish Singh",
+  "roles": [
+    "Full-Stack Developer",
+    "AI/ML Engineer",
+    "Technical Writer"
+  ],
+  "tagline": "Computer Science undergraduate building AI-driven systems — from computer vision on construction sites to explainable models for medical imaging.",
+  "location": "Thoubal, Manipur, India",
+
+  "contact": {
+    "phone": "+91-9612024828",
+    "email": "ningombamborishsingh@gmail.com",
+    "linkedin": "linkedin.com/in/ningombam-borish-singh-70b34a273",
+    "linkedinUrl": "https://linkedin.com/in/ningombam-borish-singh-70b34a273",
+    "website": "borishningombam.in",
+    "websiteUrl": "https://borishningombam.in"
+  },
+
+  "summary": "Computer Science undergraduate specializing in Artificial Intelligence and Machine Learning, with hands-on experience across AI research, computer vision, technical documentation, and full-stack development. Proficient in React.js, Next.js, Node.js, Express.js and PostgreSQL, and skilled at translating machine learning workflows into scalable, user-facing systems — as well as documenting the research behind them clearly. Currently researching explainable deep learning and hybrid CNN architectures for medical image analysis.",
+
+  "education": {
+    "institution": "Rohini College of Engineering & Technology",
+    "location": "Tamil Nadu, India",
+    "degree": "B.E. (Hons.) in Computer Science & Engineering",
+    "specialization": "AI & Machine Learning",
+    "expected": "2027",
+    "coursework": [
+      "Machine Learning",
+      "Artificial Intelligence",
+      "DBMS",
+      "Operating Systems",
+      "Data Structures & Algorithms",
+      "OOP",
+      "Embedded Systems",
+      "SQL",
+      "Database Design",
+      "Research and Development"
+    ]
+  },
+
+  "research": {
+    "status": "In Progress",
+    "title": "An Explainable Hybrid CNN Model with Adaptive Feature Fusion for Skin Lesion Diagnosis",
+    "description": "Exploring an explainable deep learning approach for skin lesion diagnosis using hybrid CNN architectures and adaptive feature fusion, focused on discriminative feature extraction, model interpretability, and diagnostic performance."
+  },
+
+  "experience": [
+    {
+      "company": "Indian Institute of Technology Ropar (IIT Ropar)",
+      "role": "Research Intern",
+      "location": "Rupnagar, Punjab, India (On-site)",
+      "period": "18 May 2026 – 20 July 2026",
+      "bullets": [
+        "Architected and delivered a full-stack Campus Navigation System for IIT Ropar, featuring interactive route visualization, RESTful APIs, and relational database integration.",
+        "Analyzed navigation requirements and designed interactive route visualization, RESTful APIs, and relational database structures.",
+        "Built modular, maintainable frontend and backend components following best practices in version control, testing, and documentation."
+      ],
+      "tags": [
+        "React.js",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Leaflet.js"
+      ]
+    },
+
+    {
+      "company": "Infosys Springboard",
+      "role": "Artificial Intelligence Virtual Intern",
+      "location": "Virtual",
+      "period": "July 2026 – Present",
+      "bullets": [
+        "Contributing to an AI-driven detection system, integrating YOLO-based computer vision models for real-time image and video analysis.",
+        "Applying Python and machine learning workflows across data preprocessing, model development, and evaluation."
+      ],
+      "tags": [
+        "Python",
+        "YOLO",
+        "Computer Vision",
+        "Model Evaluation"
+      ]
+    },
+
+    {
+      "company": "Anshos Technology",
+      "role": "Full Stack Developer Intern",
+      "location": "Tirunelveli, Tamil Nadu, India (Virtual)",
+      "period": "March 2025 – August 2025",
+      "bullets": [
+        "Built and integrated full-stack application features using React.js, Node.js, and Express.js.",
+        "Designed backend REST APIs and implemented reliable PostgreSQL data storage and retrieval workflows.",
+        "Documented application functionality and implementation workflows."
+      ],
+      "tags": [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "REST APIs"
+      ]
+    },
+
+    {
+      "company": "Young Mind Technology Solution Pvt. Ltd.",
+      "role": "Java Full Stack Developer Intern",
+      "location": "Andhra Pradesh, India (Virtual)",
+      "period": "April 2025 – May 2025",
+      "bullets": [
+        "Developed full-stack web applications using Java, HTML, CSS, and JavaScript.",
+        "Implemented backend logic, integrated system components, and managed databases to support application lifecycles."
+      ],
+      "tags": [
+        "Java",
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ]
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "SafeSight — Intelligent Workplace Safety Monitoring",
+      "class": "computer-vision · safety",
+      "confidence": 0.97,
+      "description": "An AI-powered construction site PPE monitoring system: custom-trained YOLOv8m for PPE detection and worker-level compliance tracking, with rule-based equipment association, video tracking, a RAG-based natural-language assistant over inspection data and PPE manuals, and automated PDF reporting with an interactive compliance dashboard.",
+      "tags": [
+        "YOLOv8m",
+        "Python",
+        "FastAPI",
+        "MongoDB",
+        "React",
+        "RAG",
+        "LLM"
+      ],
+      "link": null
+    },
+
+    {
+      "name": "Campus Navigation System — IIT Ropar",
+      "class": "full-stack · geospatial",
+      "confidence": 0.95,
+      "description": "Production-grade interactive campus navigation platform integrating Leaflet.js mapping, REST APIs, and PostgreSQL-backed navigation data, with a directed A* routing engine, Yen's k-shortest-paths, an admin panel, and PWA/SEO/accessibility hardening.",
+      "tags": [
+        "React.js",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "PostgreSQL",
+        "Leaflet.js"
+      ],
+      "link": null
+    },
+
+    {
+      "name": "Skin Disease Prediction System",
+      "class": "deep-learning · medical-imaging",
+      "confidence": 0.93,
+      "description": "Deep learning-based skin disease classification system trained on 11,000+ images across seven disease classes, enabling image-based diagnosis with class-wise prediction probabilities for interpretable confidence scores.",
+      "tags": [
+        "Python",
+        "CNN",
+        "EfficientNetV2",
+        "Swin Transformer",
+        "Deep Learning"
+      ],
+      "link": null
+    },
+
+    {
+      "name": "TechConnector — Social Connection Platform",
+      "class": "full-stack · social",
+      "confidence": 0.9,
+      "description": "Responsive social platform with secure authentication and real-time interaction — post creation, commenting, and liking — built across all devices.",
+      "tags": [
+        "React.js",
+        "Vite",
+        "Supabase"
+      ],
+      "link": "https://techconnector.vercel.app"
+    },
+
+    {
+      "name": "Professional Portfolio Website",
+      "class": "web · personal-brand",
+      "confidence": 0.88,
+      "description": "Responsive Next.js portfolio integrating AWS for secure contact data collection and storage, optimized for performance and SEO through component-based architecture.",
+      "tags": [
+        "Next.js",
+        "React.js",
+        "JavaScript",
+        "HTML5",
+        "CSS3"
+      ],
+      "link": "https://borishningombam.in"
+    }
+  ],
+
+  "skills": {
+    "AI/ML & Research": [
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Deep Learning",
+      "Computer Vision",
+      "CNN",
+      "YOLO",
+      "Explainable AI",
+      "Image Classification",
+      "Model Evaluation"
+    ],
+
+    "Technical Writing": [
+      "Research Documentation",
+      "Technical Documentation",
+      "Literature Analysis",
+      "Report Writing",
+      "System Documentation",
+      "API Documentation"
+    ],
+
+    "Programming": [
+      "Python",
+      "Java",
+      "JavaScript",
+      "SQL",
+      "C",
+      "HTML5",
+      "CSS3"
+    ],
+
+    "Web Development": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "Tailwind CSS",
+      "Vite",
+      "REST APIs"
+    ],
+
+    "Database & Tools": [
+      "PostgreSQL",
+      "Supabase",
+      "Database Design",
+      "Git",
+      "GitHub"
+    ]
+  },
+
+  "honors": [
+    {
+      "title": "First Prize — Web Designing Competition, Tech Firm '25",
+      "org": "Francis Xavier Engineering College",
+      "note": "Recognized for full-stack implementation and UI/UX design."
+    },
+
+    {
+      "title": "First Prize — Web Design, Spectra 2025 Technical Carnival",
+      "org": "Rohini College of Engineering & Technology",
+      "note": null
+    },
+
+    {
+      "title": "Second Prize — Project Expo",
+      "org": null,
+      "note": "Human-Computer Interaction system using computer vision and machine learning for accessibility."
+    }
+  ],
+
+  "life": {
+    "family": {
+      "description": "Borish comes from a supportive family that encourages his education, career goals, experiments, and occasionally his questionable decisions.",
+      "members": "Father, mother, and one elder sister.",
+      "family_role": "The people who somehow continue to believe he will become successful even after seeing how many hours he spends debugging."
+    },
+
+    "relationship": {
+      "status": "Single",
+      "funny_note": "Currently in a serious relationship with Antigravity, Git, and several unfinished projects.",
+      "availability": "Emotionally available after the code compiles.",
+      "dating_status": "No girlfriend currently. Applications are open, but the candidate must survive the technical interview.",
+      "requirements": [
+        "Must tolerate random discussions about AI.",
+        "Must understand that 'one small bug' can become a 5-hour debugging session.",
+        "Must accept occasional 'wait, I have an idea for a project' conversations at unreasonable hours.",
+        "Bonus points if she doesn't ask why the laptop is always open."
+      ]
+    },
+
+    "personality": {
+      "description": "Curious, ambitious, technical, occasionally overthinking, and permanently ready to start another project.",
+      "strengths": [
+        "Learns quickly",
+        "Enjoys building things",
+        "Problem-solving mindset",
+        "Research-oriented",
+        "Can turn random ideas into projects"
+      ],
+      "weaknesses": [
+        "Starts too many projects",
+        "Sometimes debugs bugs that were caused by himself",
+        "Says 'I'll finish it today' with dangerous confidence",
+        "Can spend more time choosing a tech stack than actually using it"
+      ]
+    },
+
+    "developer_humor": {
+      "favorite_excuses": [
+        "It works on my machine.",
+        "It's not a bug, it's an undocumented feature.",
+        "I'll refactor it later.",
+        "The model is not wrong; the dataset is misunderstood.",
+        "One more feature and then I'm done."
+      ],
+
+      "daily_status": [
+        "40% coding",
+        "20% debugging",
+        "15% researching",
+        "10% overthinking",
+        "10% coffee",
+        "5% wondering why the code worked yesterday"
+      ],
+
+      "current_battle": "Trying to make AI understand humans while still trying to understand JavaScript.",
+      "greatest_enemy": [
+        "npm dependency errors",
+        "Merge conflicts",
+        "Undefined variables",
+        "Unexpected CORS errors",
+        "Code that worked five minutes ago",
+        "Windows environment configuration"
+      ],
+
+      "developer_philosophy": "If it works, don't touch it. If it doesn't work, blame the dependency first."
+    },
+
+    "fun_facts": [
+      "Can discuss AI, web development, RAG, CNNs, and random life topics in the same conversation.",
+      "Has a habit of turning simple ideas into full-stack projects.",
+      "Believes every problem can probably be solved with enough debugging.",
+      "Has probably opened VS Code today.",
+      "May say 'just a small change' before completely redesigning an application.",
+      "Sometimes spends more time fixing the development environment than writing the actual code."
+    ]
+  },
+
+  "assistant_preferences": {
+    "assistant_name": "Borish's AI Assistant",
+    "personality": "Friendly, intelligent, slightly funny, technically knowledgeable, supportive, and honest.",
+    "communication_style": "Explain technical topics clearly and practically. Use simple language first, then provide deeper technical details when needed.",
+    "humor_level": "Moderate",
+    "roast_level": "Light",
+    "should_remember": [
+      "Projects",
+      "Technical skills",
+      "Research interests",
+      "Career goals",
+      "Important deadlines",
+      "Learning progress",
+      "Personal preferences shared by Borish"
+    ],
+    "developer_mode": {
+      "enabled": true,
+      "behavior": "When Borish asks about coding, provide practical solutions, explain the cause of errors, and prefer production-ready approaches over unnecessarily complicated solutions."
+    }
+  },
+
+  "funny_quotes": [
+    "My code doesn't have bugs. It has undocumented features.",
+    "I don't procrastinate. I perform extensive background processing.",
+    "AI is supposed to replace humans, but first I need it to explain my own code.",
+    "I started with one project. Now I have five and none of them are finished.",
+    "My laptop knows more about my life than most people do.",
+    "Git commit messages are basically historical records of my emotional state.",
+    "Coffee → Code → Bug → Debug → Coffee → Repeat.",
+    "If debugging is the process of removing bugs, programming must be the process of creating them."
+  ]
+}

@@ -1,0 +1,182 @@
+## Task
+
+Complete and production-polish my existing developer portfolio project. The portfolio is already implemented, so **do not rebuild it from scratch**. Inspect the existing codebase and improve, fix, and finalize it so that every section, component, interaction, animation, navigation element, and responsive layout works correctly.
+
+The final portfolio should feel like a **professional modern software developer / AI-ML engineer portfolio**, suitable for recruiters, internship applications, technical interviews, and professional networking.
+
+### Requirements
+
+1. **Complete Functionality**
+
+   * Inspect the entire existing project before making changes.
+   * Fix all build errors, runtime errors, console errors, broken imports, missing dependencies, broken routes, and non-functional buttons.
+   * Make sure every navigation link and interactive element works.
+   * Ensure project cards, resume buttons, contact buttons, social links, and other CTAs function correctly.
+   * Remove placeholder content, dead code, unused components, and broken references.
+   * Preserve the existing good design/content unless improvement is necessary.
+
+2. **Professional Developer Design**
+
+   * Make the UI look like a high-quality professional developer portfolio.
+   * Use a clean, modern, technical aesthetic rather than an overly decorative design.
+   * Maintain strong visual hierarchy, spacing, typography, alignment, and consistency.
+   * Make the portfolio immediately communicate that I am a **Full-Stack Developer and AI/ML Engineer**.
+   * Give projects, technical skills, experience, education, achievements, and contact information strong visual presentation.
+   * Use subtle gradients, glass effects, borders, shadows, code/technical visual elements, or other modern techniques only where they improve the design.
+   * Avoid excessive visual effects that make the website look unprofessional.
+
+3. **Fully Responsive**
+   The entire website must work perfectly on:
+
+   * Large desktop
+   * Standard desktop
+   * Laptop
+   * Tablet
+   * Mobile
+   * Small mobile screens
+
+   Check and optimize:
+
+   * Navbar
+   * Hero section
+   * About section
+   * Skills
+   * Projects
+   * Experience
+   * Education
+   * Achievements
+   * Contact section
+   * Footer
+   * Cards
+   * Buttons
+   * Typography
+   * Images
+   * Spacing
+   * Animations
+
+   There must be **no horizontal overflow**, overlapping elements, clipped text, broken layouts, or elements extending outside the viewport.
+
+4. **Animations & Interactions**
+   Add professional, smooth animations throughout the portfolio:
+
+   * Hero entrance animation
+   * Scroll reveal animations
+   * Smooth section transitions
+   * Project card hover animations
+   * Skill/card hover effects
+   * Button hover and click feedback
+   * Navbar transitions
+   * Image/profile animations
+   * Subtle background animations where appropriate
+   * Smooth scrolling between sections
+   * Active navigation section indication if appropriate
+
+   Animations must be:
+
+   * Smooth
+   * Fast enough to feel responsive
+   * Professional
+   * Subtle
+   * Performance-friendly
+
+   Do **not** over-animate the website.
+
+5. **Navigation**
+
+   * Make the navbar fully functional.
+   * Desktop and mobile navigation must work correctly.
+   * Add a polished mobile menu.
+   * Highlight the currently active section when appropriate.
+   * Ensure navigation automatically closes on mobile after selecting a section.
+   * Add smooth scrolling.
+   * Ensure navbar behavior works correctly while scrolling.
+
+6. **Projects**
+   Make the projects section one of the strongest parts of the portfolio.
+   Each project should clearly show:
+
+   * Project name
+   * Short description
+   * Technologies used
+   * Main technical contribution
+   * Important features
+   * GitHub/source link where available
+   * Live/demo link where available
+
+   Use professional project cards with responsive layouts and meaningful hover interactions.
+
+7. **Skills**
+   Organize technical skills professionally into logical categories such as:
+
+   * Programming Languages
+   * Frontend
+   * Backend
+   * AI/ML
+   * Computer Vision
+   * Databases
+   * Tools & Technologies
+   * Cloud/Deployment
+
+   Do not use misleading skill percentages unless there is a meaningful reason to do so.
+
+8. **Performance**
+
+   * Optimize images and assets.
+   * Avoid unnecessary heavy animations.
+   * Lazy-load large assets where appropriate.
+   * Minimize unnecessary re-renders.
+   * Keep the website fast and smooth.
+   * Avoid introducing unnecessary libraries.
+
+9. **Accessibility**
+
+   * Use semantic HTML.
+   * Add meaningful alt text.
+   * Ensure keyboard navigation works.
+   * Maintain readable contrast.
+   * Make interactive elements accessible.
+   * Use appropriate ARIA attributes where required.
+   * Respect `prefers-reduced-motion` where possible.
+
+10. **Technical Quality**
+
+    * Follow the existing project's framework and architecture.
+    * Do not unnecessarily change the technology stack.
+    * Keep components reusable and maintainable.
+    * Keep styling consistent.
+    * Use clean naming conventions.
+    * Remove unnecessary duplication.
+    * Fix dependency issues rather than hiding errors.
+    * Ensure the final project can be installed and started from a clean environment.
+
+11. **Final Validation**
+    After making all changes:
+
+    * Run the project.
+    * Check the browser console.
+    * Check the build.
+    * Test every navigation link.
+    * Test every button.
+    * Test every interactive component.
+    * Test desktop layout.
+    * Test tablet layout.
+    * Test mobile layout.
+    * Test very small mobile screens.
+    * Check for horizontal scrolling.
+    * Check animations.
+    * Check images and external links.
+    * Fix every issue discovered.
+
+### Context
+
+This is my personal developer portfolio and it represents me professionally. The portfolio should present me as a **Full-Stack Developer, AI/ML Engineer, and Technical Writer**, with a strong emphasis on software engineering, artificial intelligence, machine learning, computer vision, and real-world projects.
+
+The existing portfolio project is already developed. Your job is to **finish, polish, debug, and productionize the existing implementation**, not replace it with an unrelated template.
+
+The final result should feel like a portfolio created by a professional software engineer: **clean, technically impressive, responsive, fast, accessible, visually polished, and fully functional**.
+
+Prioritize in this order:
+
+**Functionality → Responsive Design → Professional UI → Animation → Performance → Accessibility → Code Quality**
+
+Do not stop after making visual changes. Continue until the complete portfolio works correctly across all supported screen sizes.
